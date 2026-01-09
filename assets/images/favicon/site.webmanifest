@@ -1,0 +1,22 @@
+{
+  "name": "TaskFlow - Modern Task Management",
+  "short_name": "TaskFlow",
+  "description": "Organize, collaborate, and achieve more with TaskFlow's powerful kanban boards",
+  "icons": [
+    {
+      "src": "/TaskFlow/assets/images/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/TaskFlow/assets/images/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/TaskFlow/",
+  "scope": "/TaskFlow/"
+}

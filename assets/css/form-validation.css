@@ -1,0 +1,342 @@
+/**
+ * Form Validation Styles
+ * Visual feedback for inline form validation
+ * Version: 1.0.0
+ */
+
+/* ============================================================
+   VALIDATION STATES
+   ============================================================ */
+
+/* Valid state */
+.form-input.is-valid,
+.form-textarea.is-valid,
+.form-select.is-valid {
+    border-color: var(--success);
+}
+
+.form-input.is-valid:focus,
+.form-textarea.is-valid:focus,
+.form-select.is-valid:focus {
+    border-color: var(--success);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Invalid state */
+.form-input.is-invalid,
+.form-textarea.is-invalid,
+.form-select.is-invalid {
+    border-color: var(--danger);
+}
+
+.form-input.is-invalid:focus,
+.form-textarea.is-invalid:focus,
+.form-select.is-invalid:focus {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Adjust for inputs with icons (password toggle, etc.) - DISABLED */
+/* Background images removed to prevent pattern bug on login page */
+
+/* ============================================================
+   VALIDATION MESSAGES
+   ============================================================ */
+
+.validation-message {
+    display: none;
+    font-size: 0.875rem;
+    margin-top: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    animation: slideDown 0.2s ease-out;
+}
+
+.validation-message.show {
+    display: block;
+}
+
+.validation-message.error {
+    color: var(--danger);
+    background: #fee2e2;
+    border-left: 3px solid var(--danger);
+}
+
+.validation-message.success {
+    color: var(--success);
+    background: #d1fae5;
+    border-left: 3px solid var(--success);
+}
+
+.validation-message.warning {
+    color: #f59e0b;
+    background: #fef3c7;
+    border-left: 3px solid #f59e0b;
+}
+
+.validation-message.info {
+    color: var(--primary);
+    background: var(--primary-light);
+    border-left: 3px solid var(--primary);
+}
+
+/* ============================================================
+   FORM GROUP STATES
+   ============================================================ */
+
+.form-group.has-success .form-label {
+    color: var(--success);
+}
+
+.form-group.has-error .form-label {
+    color: var(--danger);
+}
+
+/* ============================================================
+   PASSWORD STRENGTH METER
+   ============================================================ */
+
+.password-strength {
+    margin-top: var(--space-2);
+    height: 4px;
+    background: var(--gray-200);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s ease;
+    background: var(--gray-300);
+}
+
+.password-strength-bar.weak {
+    width: 33%;
+    background: var(--danger);
+}
+
+.password-strength-bar.medium {
+    width: 66%;
+    background: #f59e0b;
+}
+
+.password-strength-bar.strong {
+    width: 100%;
+    background: var(--success);
+}
+
+.password-strength-label {
+    font-size: 0.75rem;
+    margin-top: var(--space-1);
+    font-weight: 500;
+}
+
+.password-strength-label.weak {
+    color: var(--danger);
+}
+
+.password-strength-label.medium {
+    color: #f59e0b;
+}
+
+.password-strength-label.strong {
+    color: var(--success);
+}
+
+/* ============================================================
+   REAL-TIME VALIDATION INDICATORS
+   ============================================================ */
+
+.validation-checklist {
+    margin-top: var(--space-2);
+    padding: var(--space-3);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+}
+
+.validation-checklist-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) 0;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    transition: color 0.2s ease;
+}
+
+.validation-checklist-item::before {
+    content: '○';
+    font-size: 1rem;
+    color: var(--gray-400);
+    transition: all 0.2s ease;
+}
+
+.validation-checklist-item.valid {
+    color: var(--success);
+}
+
+.validation-checklist-item.valid::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: bold;
+}
+
+.validation-checklist-item.invalid {
+    color: var(--danger);
+}
+
+.validation-checklist-item.invalid::before {
+    content: '✗';
+    color: var(--danger);
+}
+
+/* ============================================================
+   LOADING STATE
+   ============================================================ */
+
+.form-input.is-validating {
+    border-color: #3b82f6;
+}
+
+/* ============================================================
+   ASYNC VALIDATION FEEDBACK
+   ============================================================ */
+
+.async-validation {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.async-validation.checking {
+    color: var(--primary);
+}
+
+.async-validation.checking::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--primary);
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.async-validation.available {
+    color: var(--success);
+}
+
+.async-validation.available::before {
+    content: '✓';
+    font-weight: bold;
+}
+
+.async-validation.unavailable {
+    color: var(--danger);
+}
+
+.async-validation.unavailable::before {
+    content: '✗';
+    font-weight: bold;
+}
+
+/* ============================================================
+   CHARACTER COUNTER
+   ============================================================ */
+
+.character-counter {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--space-2);
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+.character-counter.warning {
+    color: #f59e0b;
+}
+
+.character-counter.danger {
+    color: var(--danger);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.form-input.shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .validation-message {
+        font-size: 0.8125rem;
+        padding: var(--space-2);
+    }
+
+    .validation-checklist {
+        padding: var(--space-2);
+    }
+
+    .validation-checklist-item {
+        font-size: 0.8125rem;
+    }
+}
+
+/* ============================================================
+   DARK MODE SUPPORT (for future use)
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+    body.dark-mode .validation-message.error {
+        background: rgba(239, 68, 68, 0.1);
+    }
+
+    body.dark-mode .validation-message.success {
+        background: rgba(16, 185, 129, 0.1);
+    }
+
+    body.dark-mode .validation-checklist {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}

@@ -1,0 +1,49 @@
+services:
+  # Web Service (TaskFlow Application)
+  - type: web
+    name: taskflow
+    runtime: docker
+    repo: https://github.com/mrajguruu/TaskFlow
+    branch: main
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_HOST
+        value: gateway01.ap-southeast-1.prod.aws.tidbcloud.com
+      - key: DB_PORT
+        value: 4000
+      - key: DB_NAME
+        value: taskflow
+      - key: DB_USER
+        value: z9aNiT3drjF8UeQ.root
+      - key: DB_PASS
+        sync: false # Mark as secret (set this manually in Render dashboard)
+      - key: CLEANUP_TOKEN
+        sync: false # Mark as secret (set this manually in Render dashboard)
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /
+
+  # Cron Job (Cleanup Temporary Users)
+  - type: cron
+    name: taskflow-cleanup
+    runtime: docker
+    repo: https://github.com/YOUR_USERNAME/TaskFlow # Update this with your GitHub repo URL
+    branch: main
+    dockerfilePath: ./Dockerfile
+    schedule: "0 */2 * * *" # Runs every 2 hours
+    envVars:
+      - key: DB_HOST
+        value: gateway01.ap-southeast-1.prod.aws.tidbcloud.com
+      - key: DB_PORT
+        value: 4000
+      - key: DB_NAME
+        value: taskflow
+      - key: DB_USER
+        value: z9aNiT3drjF8UeQ.root
+      - key: DB_PASS
+        sync: false # Mark as secret
+      - key: CLEANUP_TOKEN
+        sync: false # Mark as secret
+    plan: free
+    autoDeploy: true
+    startCommand: php /var/www/html/cron/cleanup-temp-users.php

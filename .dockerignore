@@ -1,0 +1,25 @@
+# Git files
+.git
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Local development files
+.vscode
+.idea
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Example/template files (not needed in production)
+config/database.example.php
+config/secrets.example.php
+
+# Temporary files
+*.tmp
+*.bak
+*.swp

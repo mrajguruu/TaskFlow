@@ -1,0 +1,348 @@
+/**
+ * Team Management Page Styles (Professional Minimal Design)
+ * Enhanced team member cards and statistics
+ */
+
+/* ============================================================
+   TEAM PAGE HEADER
+   ============================================================ */
+.team-page-header {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.team-header-content {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.team-header-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.team-page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 4px;
+}
+
+.team-page-subtitle {
+    font-size: 0.9375rem;
+    color: var(--gray-600);
+}
+
+/* ============================================================
+   TEAM STATS CARDS
+   ============================================================ */
+.team-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.team-stat-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition: var(--transition);
+}
+
+.team-stat-card:hover {
+    border-color: var(--gray-300);
+    box-shadow: var(--shadow-sm);
+}
+
+.team-stat-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.team-stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.team-stat-icon-primary {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.team-stat-icon-warning {
+    background: var(--warning-light);
+    color: var(--warning);
+}
+
+.team-stat-icon-success {
+    background: var(--success-light);
+    color: var(--success);
+}
+
+.team-stat-content {
+    flex: 1;
+}
+
+.team-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.team-stat-label {
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   TEAM MEMBERS GRID
+   ============================================================ */
+.team-members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: var(--space-5);
+}
+
+.team-member-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-member-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+    transform: translateY(-2px);
+}
+
+.team-member-header {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.team-member-avatar-wrapper {
+    flex-shrink: 0;
+}
+
+.team-member-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.team-member-name-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+}
+
+.team-member-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.3;
+}
+
+.team-member-role-badge {
+    padding: 4px 10px;
+    background: var(--warning-light);
+    color: var(--warning);
+    border-radius: var(--radius-md);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+}
+
+.team-member-email {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: var(--space-2);
+}
+
+.team-member-username {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+/* ============================================================
+   MEMBER STATS
+   ============================================================ */
+.team-member-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+}
+
+.team-member-stat {
+    text-align: center;
+}
+
+.team-member-stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.team-member-stat-value.success {
+    color: var(--success);
+}
+
+.team-member-stat-label {
+    font-size: 0.6875rem;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   MEMBER ACTIVITY
+   ============================================================ */
+.team-member-activity {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    padding: var(--space-3);
+    background: var(--gray-50);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   MEMBER ACTIONS
+   ============================================================ */
+.team-member-actions {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: auto;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--gray-200);
+}
+
+.team-member-actions .btn {
+    flex: 1;
+}
+
+/* Current User Badge */
+.current-user-badge {
+    background: var(--info-light);
+    color: var(--info);
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid var(--info);
+    margin-top: var(--space-4);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .team-members-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .team-stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .team-page-header {
+        padding: var(--space-4);
+    }
+
+    .team-header-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .team-page-title {
+        font-size: 1.5rem;
+    }
+
+    .team-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-members-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-member-stats {
+        gap: var(--space-2);
+    }
+
+    .team-member-actions {
+        flex-direction: column;
+    }
+
+    .team-member-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-member-card {
+        padding: var(--space-4);
+    }
+
+    .team-member-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .team-member-name-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-stat-value {
+        font-size: 1.5rem;
+    }
+}

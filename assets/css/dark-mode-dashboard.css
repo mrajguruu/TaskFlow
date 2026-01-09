@@ -1,0 +1,413 @@
+/**
+ * Dark Mode - Dashboard Specific Styles
+ * Polished dark mode for dashboard components
+ * Version: 1.0.0
+ */
+
+/* ============================================================
+   DASHBOARD WELCOME BANNER
+   ============================================================ */
+
+.dark-mode .dashboard-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    border: 1px solid rgba(96, 165, 250, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .dashboard-header h1 {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .dashboard-header p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .date-badge {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+}
+
+/* ============================================================
+   STAT CARDS - COLORFUL ICONS
+   ============================================================ */
+
+.dark-mode .stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode .stat-card:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Stat card with blue border */
+.dark-mode .stat-card:nth-child(1) {
+    border-left: 2px solid rgba(96, 165, 250, 0.4);
+}
+
+.dark-mode .stat-card:nth-child(1) .stat-icon {
+    background: rgba(96, 165, 250, 0.12);
+    color: #60a5fa;
+}
+
+/* Stat card with yellow border */
+.dark-mode .stat-card:nth-child(2) {
+    border-left: 2px solid rgba(251, 191, 36, 0.4);
+}
+
+.dark-mode .stat-card:nth-child(2) .stat-icon {
+    background: rgba(251, 191, 36, 0.12);
+    color: #fbbf24;
+}
+
+/* Stat card with green border */
+.dark-mode .stat-card:nth-child(3) {
+    border-left: 2px solid rgba(74, 222, 128, 0.4);
+}
+
+.dark-mode .stat-card:nth-child(3) .stat-icon {
+    background: rgba(74, 222, 128, 0.12);
+    color: #4ade80;
+}
+
+/* Stat card with purple border */
+.dark-mode .stat-card:nth-child(4) {
+    border-left: 2px solid rgba(167, 139, 250, 0.4);
+}
+
+.dark-mode .stat-card:nth-child(4) .stat-icon {
+    background: rgba(167, 139, 250, 0.12);
+    color: #a78bfa;
+}
+
+.dark-mode .stat-value {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.dark-mode .stat-label {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.dark-mode .stat-sublabel {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+}
+
+/* ============================================================
+   PROJECT CARDS - IMPROVED COLORS
+   ============================================================ */
+
+.dark-mode .project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode .project-card:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(96, 165, 250, 0.2);
+    transform: translateY(-4px);
+}
+
+.dark-mode .project-header h3 {
+    color: var(--text-primary);
+}
+
+.dark-mode .project-description {
+    color: var(--text-secondary);
+}
+
+.dark-mode .project-owner {
+    color: var(--text-muted);
+}
+
+.dark-mode .project-stats {
+    border-top-color: var(--border-color);
+}
+
+.dark-mode .project-stat-item {
+    color: var(--text-secondary);
+}
+
+.dark-mode .project-stat-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.dark-mode .project-deadline {
+    background: var(--danger-light);
+    color: var(--danger);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.dark-mode .project-deadline.due-soon {
+    background: var(--warning-light);
+    color: var(--warning);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.dark-mode .project-deadline.on-track {
+    background: var(--success-light);
+    color: var(--success);
+    border-color: rgba(74, 222, 128, 0.3);
+}
+
+/* ============================================================
+   PROGRESS BARS
+   ============================================================ */
+
+.dark-mode .progress {
+    background: rgba(51, 65, 85, 0.5);
+    border: 1px solid var(--border-color-subtle);
+}
+
+.dark-mode .progress-bar {
+    background: var(--primary);
+}
+
+.dark-mode .progress-bar.success {
+    background: var(--success);
+}
+
+.dark-mode .progress-bar.warning {
+    background: var(--warning);
+}
+
+.dark-mode .progress-bar.danger {
+    background: var(--danger);
+}
+
+.dark-mode .progress-label {
+    color: var(--text-primary);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   EMPTY STATES
+   ============================================================ */
+
+.dark-mode .empty-state {
+    background: var(--bg-secondary);
+    border: 2px dashed var(--border-color);
+    color: var(--text-muted);
+}
+
+.dark-mode .empty-state-icon {
+    color: var(--gray-400);
+    opacity: 0.5;
+}
+
+.dark-mode .empty-state-title {
+    color: var(--text-secondary);
+}
+
+.dark-mode .empty-state-description {
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   RECENT ACTIVITY
+   ============================================================ */
+
+.dark-mode .activity-item {
+    border-left: 2px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.dark-mode .activity-item:hover {
+    background: var(--bg-tertiary);
+}
+
+.dark-mode .activity-item::before {
+    background: var(--bg-primary);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 0 4px var(--bg-secondary);
+}
+
+.dark-mode .activity-icon {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.dark-mode .activity-title {
+    color: var(--text-primary);
+}
+
+.dark-mode .activity-description {
+    color: var(--text-secondary);
+}
+
+.dark-mode .activity-time {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+}
+
+/* ============================================================
+   TASK CARDS (KANBAN)
+   ============================================================ */
+
+.dark-mode .task-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode .task-card:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--border-color-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.dark-mode .task-card.priority-high {
+    border-left: 3px solid var(--danger);
+}
+
+.dark-mode .task-card.priority-medium {
+    border-left: 3px solid var(--warning);
+}
+
+.dark-mode .task-card.priority-low {
+    border-left: 3px solid var(--success);
+}
+
+.dark-mode .task-title {
+    color: var(--text-primary);
+}
+
+.dark-mode .task-description {
+    color: var(--text-secondary);
+}
+
+.dark-mode .task-meta {
+    color: var(--text-muted);
+}
+
+.dark-mode .task-assignee {
+    border: 2px solid var(--bg-secondary);
+    box-shadow: 0 0 0 1px var(--border-color);
+}
+
+/* ============================================================
+   KANBAN COLUMNS
+   ============================================================ */
+
+.dark-mode .kanban-column {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .kanban-column-header {
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dark-mode .kanban-column-title {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.dark-mode .kanban-column-count {
+    background: var(--primary-light);
+    color: var(--primary);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+/* ============================================================
+   TEAM MEMBER CARDS
+   ============================================================ */
+
+.dark-mode .member-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode .member-card:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.dark-mode .member-avatar {
+    border: 3px solid var(--bg-secondary);
+    box-shadow: 0 0 0 1px var(--border-color);
+}
+
+.dark-mode .member-name {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.dark-mode .member-role {
+    color: var(--text-secondary);
+}
+
+.dark-mode .member-email {
+    color: var(--text-muted);
+}
+
+.dark-mode .member-stats {
+    border-top: 1px solid var(--border-color);
+}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+
+.dark-mode .section-header {
+    color: var(--text-primary);
+    border-bottom-color: var(--border-color);
+}
+
+.dark-mode .section-title {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.dark-mode .section-subtitle {
+    color: var(--text-muted);
+}
+
+.dark-mode .section-action {
+    color: var(--primary);
+}
+
+.dark-mode .section-action:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .dark-mode .stat-card {
+        border-left-width: 3px;
+    }
+
+    .dark-mode .dashboard-header {
+        border-radius: var(--radius-lg);
+    }
+}

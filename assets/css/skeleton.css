@@ -1,0 +1,432 @@
+/**
+ * Skeleton Loading States
+ * Placeholder content while data loads
+ */
+
+/* ============================================================
+   SKELETON BASE
+   ============================================================ */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--gray-200) 0%,
+        var(--gray-100) 50%,
+        var(--gray-200) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ============================================================
+   SKELETON ELEMENTS
+   ============================================================ */
+.skeleton-text {
+    height: 1em;
+    margin-bottom: var(--space-2);
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-text:last-child {
+    margin-bottom: 0;
+}
+
+.skeleton-text-short {
+    width: 60%;
+}
+
+.skeleton-text-medium {
+    width: 80%;
+}
+
+.skeleton-text-long {
+    width: 100%;
+}
+
+.skeleton-title {
+    height: 1.5em;
+    width: 40%;
+    margin-bottom: var(--space-3);
+    border-radius: var(--radius-md);
+}
+
+.skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.skeleton-avatar-sm {
+    width: 32px;
+    height: 32px;
+}
+
+.skeleton-avatar-md {
+    width: 48px;
+    height: 48px;
+}
+
+.skeleton-avatar-lg {
+    width: 64px;
+    height: 64px;
+}
+
+.skeleton-button {
+    height: 40px;
+    width: 100px;
+    border-radius: var(--radius-md);
+}
+
+.skeleton-input {
+    height: 42px;
+    width: 100%;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-badge {
+    height: 24px;
+    width: 60px;
+    border-radius: var(--radius-full);
+}
+
+.skeleton-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   SKELETON CARD
+   ============================================================ */
+.skeleton-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+}
+
+.skeleton-card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.skeleton-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.skeleton-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--gray-100);
+}
+
+/* ============================================================
+   SKELETON PROJECT CARD
+   ============================================================ */
+.skeleton-project-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.skeleton-project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.skeleton-project-title {
+    flex: 1;
+}
+
+.skeleton-project-description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.skeleton-project-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+}
+
+.skeleton-project-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.skeleton-project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skeleton-project-avatars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ============================================================
+   SKELETON STAT CARD
+   ============================================================ */
+.skeleton-stat-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+}
+
+.skeleton-stat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-stat-label {
+    height: 0.875em;
+    width: 100px;
+}
+
+.skeleton-stat-value {
+    height: 2em;
+    width: 80px;
+    margin-bottom: var(--space-2);
+}
+
+.skeleton-stat-change {
+    height: 0.875em;
+    width: 60px;
+}
+
+/* ============================================================
+   SKELETON TABLE
+   ============================================================ */
+.skeleton-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skeleton-table-row {
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.skeleton-table-cell {
+    padding: var(--space-4);
+}
+
+.skeleton-table-cell-content {
+    height: 1em;
+    width: 100%;
+}
+
+/* ============================================================
+   SKELETON TEAM MEMBER CARD
+   ============================================================ */
+.skeleton-member-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+}
+
+.skeleton-member-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.skeleton-member-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.skeleton-member-name {
+    height: 1.125em;
+    width: 140px;
+}
+
+.skeleton-member-email {
+    height: 0.875em;
+    width: 180px;
+}
+
+.skeleton-member-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+.skeleton-member-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+/* ============================================================
+   SKELETON TASK CARD
+   ============================================================ */
+.skeleton-task-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-left: 3px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-task-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-task-title {
+    height: 1.125em;
+    width: 70%;
+}
+
+.skeleton-task-description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+}
+
+.skeleton-task-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+/* ============================================================
+   SKELETON FORM
+   ============================================================ */
+.skeleton-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.skeleton-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.skeleton-form-label {
+    height: 0.875em;
+    width: 100px;
+}
+
+.skeleton-form-buttons {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+}
+
+/* ============================================================
+   SKELETON GRID
+   ============================================================ */
+.skeleton-grid {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.skeleton-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.skeleton-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.skeleton-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .skeleton-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skeleton-project-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .skeleton-grid-2,
+    .skeleton-grid-3,
+    .skeleton-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .skeleton-project-stats,
+    .skeleton-member-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .skeleton-project-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.skeleton-container {
+    padding: var(--space-6);
+}
+
+.skeleton-spacing {
+    margin-bottom: var(--space-6);
+}
+
+.skeleton-spacing:last-child {
+    margin-bottom: 0;
+}
+
+/* Hide content while loading */
+.loading .hide-while-loading {
+    display: none;
+}
+
+.loading .show-while-loading {
+    display: block;
+}
+
+.show-while-loading {
+    display: none;
+}

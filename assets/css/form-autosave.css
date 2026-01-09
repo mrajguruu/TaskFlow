@@ -1,0 +1,128 @@
+/**
+ * Form Auto-Save Styles
+ * Visual indicators for auto-save functionality
+ * Version: 1.0.0
+ */
+
+/* ============================================================
+   AUTO-SAVE INDICATOR
+   ============================================================ */
+
+.autosave-indicator {
+    display: none;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.autosave-indicator.autosave-saving,
+.autosave-indicator.autosave-saved,
+.autosave-indicator.autosave-restored,
+.autosave-indicator.autosave-error {
+    display: flex;
+}
+
+/* Saving state */
+.autosave-indicator.autosave-saving {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.autosave-indicator.autosave-saving .autosave-icon {
+    animation: spin 1s linear infinite;
+}
+
+/* Saved state */
+.autosave-indicator.autosave-saved {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* Restored state */
+.autosave-indicator.autosave-restored {
+    background: rgba(251, 191, 36, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+/* Error state */
+.autosave-indicator.autosave-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.autosave-icon {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.autosave-text {
+    font-weight: 500;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.autosave-indicator {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+
+.dark-mode .autosave-indicator.autosave-saving {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .autosave-indicator.autosave-saved {
+    background: rgba(52, 211, 153, 0.15);
+    border-color: rgba(52, 211, 153, 0.3);
+}
+
+.dark-mode .autosave-indicator.autosave-restored {
+    background: rgba(251, 191, 36, 0.15);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.dark-mode .autosave-indicator.autosave-error {
+    background: rgba(248, 113, 113, 0.15);
+    border-color: rgba(248, 113, 113, 0.3);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+    .autosave-indicator {
+        font-size: 0.8125rem;
+        padding: var(--space-2);
+    }
+}

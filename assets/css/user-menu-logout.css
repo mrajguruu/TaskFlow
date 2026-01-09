@@ -1,0 +1,35 @@
+/* Logout button styling - red in both light and dark modes */
+.user-menu-item.logout {
+    color: #dc2626 !important;
+}
+
+.user-menu-item.logout svg {
+    color: #dc2626 !important;
+}
+
+.user-menu-item.logout:hover {
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+}
+
+.user-menu-item.logout:hover svg {
+    color: #b91c1c !important;
+}
+
+/* Mobile nav footer logout button - red in light mode */
+.mobile-nav-footer-link.logout {
+    color: #dc2626 !important;
+}
+
+.mobile-nav-footer-link.logout svg {
+    color: #dc2626 !important;
+}
+
+.mobile-nav-footer-link.logout:hover {
+    background: #fee2e2 !important;
+    color: #b91c1c !important;
+}
+
+.mobile-nav-footer-link.logout:hover svg {
+    color: #b91c1c !important;
+}

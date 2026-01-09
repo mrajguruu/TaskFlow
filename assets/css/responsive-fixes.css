@@ -1,0 +1,712 @@
+/**
+ * Responsive Design Fixes
+ * Ensures perfect mobile experience across all devices
+ */
+
+/* ============================================================
+   MOBILE FIRST - BASE STYLES
+   ============================================================ */
+
+/* Ensure proper box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* Images responsive by default */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================================
+   MOBILE (< 480px) - SMALL PHONES
+   ============================================================ */
+@media (max-width: 480px) {
+    /* Header adjustments */
+    .header-container {
+        padding: 0 var(--space-3);
+        height: 60px;
+    }
+
+    .logo-text {
+        font-size: 1rem;
+    }
+
+    .logo-icon-wrapper {
+        width: 32px;
+        height: 32px;
+    }
+
+    .logo-icon-wrapper svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Main content */
+    .main-content {
+        padding: var(--space-3);
+    }
+
+    /* Page titles */
+    .page-header {
+        margin-bottom: var(--space-4);
+    }
+
+    .page-title {
+        font-size: 1.25rem;
+        margin-bottom: var(--space-2);
+    }
+
+    .page-subtitle {
+        font-size: 0.8125rem;
+    }
+
+    /* Buttons */
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-sm {
+        padding: var(--space-2) var(--space-3);
+        font-size: 0.8125rem;
+    }
+
+    /* Cards */
+    .card {
+        padding: var(--space-4);
+    }
+
+    /* Stats grid */
+    .stats-grid,
+    .stats-grid-enhanced {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    .stat-card {
+        padding: var(--space-4);
+    }
+
+    .stat-value,
+    .stat-value-large {
+        font-size: 1.5rem;
+    }
+
+    /* Projects grid */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .project-card {
+        padding: var(--space-4);
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .project-stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    /* Team grid */
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .member-card {
+        padding: var(--space-4);
+    }
+
+    /* Forms */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    /* Modals */
+    .modal-content {
+        width: 95vw;
+        max-width: 95vw;
+        margin: var(--space-3);
+        padding: var(--space-4);
+    }
+
+    .modal-header {
+        padding: var(--space-4);
+    }
+
+    .modal-body {
+        padding: var(--space-4);
+    }
+
+    .modal-footer {
+        padding: var(--space-4);
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+    }
+
+    /* Tables - make scrollable */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    /* Dashboard welcome */
+    .dashboard-welcome {
+        padding: var(--space-4);
+    }
+
+    .welcome-title {
+        font-size: 1.25rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.875rem;
+    }
+
+    /* Footer */
+    .main-footer {
+        padding: var(--space-4) var(--space-3);
+        font-size: 0.8125rem;
+    }
+}
+
+/* ============================================================
+   TABLET (481px - 768px)
+   ============================================================ */
+@media (min-width: 481px) and (max-width: 768px) {
+    .header-container {
+        padding: 0 var(--space-4);
+    }
+
+    .main-content {
+        padding: var(--space-5) var(--space-4);
+    }
+
+    /* Two columns where possible */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================================
+   TABLET LANDSCAPE & SMALL DESKTOP (769px - 1024px)
+   ============================================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header-container {
+        max-width: 100%;
+        padding: 0 var(--space-5);
+    }
+
+    .main-content {
+        max-width: 100%;
+        padding: var(--space-6) var(--space-5);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Navigation stays in header but repositioned */
+    .header-nav {
+        position: static;
+        transform: none;
+        background: transparent;
+        padding: 0;
+    }
+}
+
+/* ============================================================
+   PROFILE PAGE RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-4);
+    }
+
+    .profile-header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-avatar-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-stats-mini {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .profile-section {
+        padding: var(--space-4);
+    }
+
+    .danger-zone-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-4);
+    }
+
+    .danger-zone-content {
+        flex-direction: column;
+    }
+
+    .danger-zone-content .btn {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   KANBAN BOARD RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .board-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kanban-column:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .board-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+    }
+
+    .board-title {
+        font-size: 1.25rem;
+    }
+
+    .board-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .board-actions .btn {
+        width: 100%;
+    }
+
+    .board-columns {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .kanban-column {
+        min-width: auto;
+    }
+
+    .task-card {
+        padding: var(--space-3);
+    }
+
+    .task-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+    }
+
+    .task-meta {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+    }
+}
+
+@media (max-width: 480px) {
+    .board-columns {
+        padding: 0 var(--space-2);
+    }
+
+    .kanban-column {
+        padding: var(--space-3);
+    }
+
+    .column-header {
+        padding: var(--space-3);
+    }
+
+    .task-card {
+        margin-bottom: var(--space-2);
+    }
+}
+
+/* ============================================================
+   PROJECTS PAGE RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .projects-header {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .projects-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .search-filter-bar {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .search-input-wrapper {
+        width: 100%;
+    }
+
+    .filter-group {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .filter-group select {
+        width: 100%;
+    }
+
+    .project-card-actions {
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .project-card-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   TEAM PAGE RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .team-header {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .team-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .member-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .member-info-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+    }
+
+    .member-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .member-actions .btn {
+        width: 100%;
+    }
+
+    .member-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   AUTH PAGES RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: var(--space-4);
+    }
+
+    .auth-card {
+        padding: var(--space-5);
+    }
+
+    .auth-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: var(--space-3);
+    }
+
+    .auth-card {
+        padding: var(--space-4);
+    }
+
+    .auth-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .toast-container {
+        right: var(--space-3);
+        left: var(--space-3);
+        top: 76px;
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .toast-container {
+        top: 68px;
+        right: var(--space-2);
+        left: var(--space-2);
+    }
+
+    .toast {
+        padding: var(--space-3);
+    }
+
+    .toast-title {
+        font-size: 0.875rem;
+    }
+
+    .toast-message {
+        font-size: 0.8125rem;
+    }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Show only on mobile */
+.show-mobile {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .show-mobile {
+        display: block !important;
+    }
+
+    .show-mobile-flex {
+        display: flex !important;
+    }
+
+    .show-mobile-grid {
+        display: grid !important;
+    }
+}
+
+/* Text alignment responsive */
+@media (max-width: 768px) {
+    .text-mobile-center {
+        text-align: center !important;
+    }
+
+    .text-mobile-left {
+        text-align: left !important;
+    }
+}
+
+/* Spacing responsive */
+@media (max-width: 768px) {
+    .gap-mobile-sm {
+        gap: var(--space-2) !important;
+    }
+
+    .p-mobile-sm {
+        padding: var(--space-3) !important;
+    }
+
+    .m-mobile-sm {
+        margin: var(--space-3) !important;
+    }
+}
+
+/* ============================================================
+   TOUCH IMPROVEMENTS
+   ============================================================ */
+
+/* Larger tap targets on mobile */
+@media (max-width: 768px) {
+    button,
+    a.btn,
+    .clickable {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .btn-sm {
+        min-height: 40px;
+    }
+
+    /* Theme toggle - proper sizing without stretch */
+    .theme-toggle {
+        width: 50px !important;
+        height: 26px !important;
+        min-width: 50px;
+        min-height: 26px;
+        max-width: 50px;
+        max-height: 26px;
+        padding: 0 5px;
+        margin: 9px 0; /* Creates touch area without stretching button */
+    }
+
+    .theme-toggle::before {
+        top: 3px;
+        left: 3px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .theme-toggle svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    /* Hide user menu on mobile - hamburger handles it */
+    .user-menu {
+        display: none !important;
+    }
+
+    /* Better form controls */
+    input,
+    textarea,
+    select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        min-height: 44px;
+    }
+
+    /* Better checkbox/radio targets */
+    input[type="checkbox"],
+    input[type="radio"] {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Smooth scrolling on mobile */
+@media (max-width: 768px) {
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ============================================================
+   LANDSCAPE ORIENTATION FIXES
+   ============================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .mobile-nav-drawer {
+        width: 240px;
+    }
+
+    .mobile-nav-user {
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+@media print {
+    .header-nav,
+    .mobile-menu-btn,
+    .mobile-nav-drawer,
+    .mobile-nav-overlay,
+    .user-menu,
+    .btn,
+    .main-footer,
+    .toast-container {
+        display: none !important;
+    }
+
+    .main-content {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .card {
+        page-break-inside: avoid;
+    }
+}

@@ -1,0 +1,294 @@
+# ============================================================================
+# TaskFlow .gitignore - Production-Ready Security Configuration
+# ============================================================================
+
+# ============================================================================
+# CRITICAL: Configuration & Secrets (NEVER COMMIT THESE)
+# ============================================================================
+
+# Secrets and database credentials (never commit)
+config/secrets.php
+config/database.php
+config/*.local.php
+
+# Config files with dev settings are OK to commit
+# Update manually on production server
+
+# Environment files (contains sensitive data)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# API keys and tokens
+*.key
+*.token
+secrets/
+.secrets/
+
+# ============================================================================
+# User-Generated Content
+# ============================================================================
+
+# Uploaded files (contains user data)
+uploads/avatars/*
+uploads/attachments/*
+!uploads/avatars/.gitkeep
+!uploads/attachments/.gitkeep
+
+# ============================================================================
+# Logs & Temporary Files
+# ============================================================================
+
+# Log files
+*.log
+logs/
+log/
+storage/logs/
+
+# Temporary files
+tmp/
+temp/
+cache/
+*.tmp
+*.cache
+
+# Rate limiting and lock files
+*.lock
+cleanup_last_run.lock
+cron_last_run.lock
+
+# ============================================================================
+# Database Files & Backups
+# ============================================================================
+
+# Database dumps (may contain sensitive data)
+backups/*.sql
+backups/*.sql.gz
+db_backup/
+*.dump
+
+# Keep schema and sample data (safe to commit)
+!sql/schema.sql
+!sql/sample-data.sql
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================================================
+# IDE & Editor Files
+# ============================================================================
+
+# VSCode
+.vscode/
+.vscode-test/
+*.code-workspace
+
+# PhpStorm / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*.swn
+.*.sw[a-z]
+*~
+
+# Emacs
+\#*\#
+.\#*
+
+# NetBeans
+nbproject/
+nbbuild/
+dist/
+nbdist/
+
+# ============================================================================
+# Operating System Files
+# ============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# Dependencies (Package Managers)
+# ============================================================================
+
+# Composer (PHP)
+vendor/
+composer.lock
+composer.phar
+
+# Node.js / npm / yarn
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.npm
+.yarn-integrity
+
+# ============================================================================
+# Build & Distribution Files
+# ============================================================================
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Build directories
+build/
+dist/
+out/
+
+# ============================================================================
+# Testing Files
+# ============================================================================
+
+# PHPUnit
+.phpunit.result.cache
+phpunit.xml
+coverage/
+.phpunit.cache/
+
+# Testing databases
+testing.sqlite
+test.db
+test.sql
+
+# ============================================================================
+# Session & Cache Files
+# ============================================================================
+
+# PHP sessions
+sessions/
+*.sess
+
+# Application cache
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+bootstrap/cache/
+
+# ============================================================================
+# Security & Sensitive Data
+# ============================================================================
+
+# SSH keys
+*.pem
+*.ppk
+id_rsa
+id_rsa.pub
+
+# SSL certificates
+*.crt
+*.cer
+*.der
+*.p7b
+*.p7c
+*.pfx
+*.p12
+
+# Password files
+.htpasswd
+passwords.txt
+
+# ============================================================================
+# KEEP THESE FILES (Negation Rules)
+# ============================================================================
+
+# Keep example/template files (safe to commit)
+!config/config.example.php
+!config/database.example.php
+!config/secrets.example.php
+!.env.example
+
+# Keep directory structure files
+!logs/.gitkeep
+!cache/.gitkeep
+!tmp/.gitkeep
+!uploads/.gitkeep
+!uploads/avatars/.gitkeep
+!uploads/attachments/.gitkeep
+
+# Keep documentation
+!README.md
+!SECURITY.md
+!CONTRIBUTING.md
+!LICENSE
+!CHANGELOG.md
+
+# Keep configuration for deployment
+!.htaccess
+!.htaccess.example
+
+# ============================================================================
+# Optional: Framework-Specific (Uncomment if using)
+# ============================================================================
+
+# Laravel
+# storage/
+# bootstrap/cache/
+# .phpunit.result.cache
+
+# WordPress
+# wp-config.php
+# wp-content/uploads/
+# wp-content/cache/
+# wp-content/backup*/
+
+# CodeIgniter
+# application/cache/
+# application/logs/
+
+# ============================================================================
+# GitHub Actions (NEW - Added for CI/CD)
+# ============================================================================
+
+# GitHub Actions logs (local testing only)
+.github/workflows/*.log
+
+# Keep all workflow files (these are safe and necessary)
+!.github/workflows/*.yml
+!.github/workflows/*.yaml
+
+# ============================================================================
+# Project-Specific Ignores (Add Your Custom Rules Below)
+# ============================================================================
+
+# Add any TaskFlow-specific files that should not be committed
