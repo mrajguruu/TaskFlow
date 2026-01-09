@@ -17,24 +17,28 @@ if (php_sapi_name() !== 'cli' && !isset($_GET['token'])) {
 }
 
 try {
-    // Load configuration
+    // Load configuration - works with environment variables (Render) or local files
     $secretsPath = __DIR__ . '/../config/secrets.php';
     $dbPath = __DIR__ . '/../config/database.php';
 
-    if (!file_exists($secretsPath)) {
-        throw new Exception('secrets.php not found');
+    // Load secrets from file or environment variables
+    if (file_exists($secretsPath)) {
+        $secrets = require $secretsPath;
+    } else {
+        // Production (Render) - use environment variables
+        $secrets = [
+            'cleanup_token' => getenv('CLEANUP_TOKEN'),
+            'protected_user_ids' => [1, 2, 3, 4, 5, 6, 7, 8],
+            'cleanup_age_hours' => 1,
+            'min_interval_seconds' => 600,
+            'max_delete_per_run' => 100,
+        ];
     }
-
-    if (!file_exists($dbPath)) {
-        throw new Exception('database.php not found');
-    }
-
-    $secrets = require $secretsPath;
 
     // Validate token
-    $providedToken = $_GET['token'] ?? $_SERVER['HTTP_X_CLEANUP_TOKEN'] ?? '';
+    $providedToken = $_GET['token'] ?? $_SERVER['HTTP_X_CLEANUP_TOKEN'] ?? getenv('CLEANUP_TOKEN') ?? '';
 
-    if (empty($providedToken) || !hash_equals($secrets['cleanup_token'], $providedToken)) {
+    if (empty($providedToken) || empty($secrets['cleanup_token']) || !hash_equals($secrets['cleanup_token'], $providedToken)) {
         http_response_code(403);
         throw new Exception('Invalid or missing cleanup token');
     }
@@ -60,10 +64,19 @@ try {
     }
 
     // Update last run timestamp
-    file_put_contents($lastRunFile, time());
+    @file_put_contents($lastRunFile, time()); // @ suppresses warning if logs dir doesn't exist
 
-    // Load database configuration (defines DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS)
-    require $dbPath;
+    // Load database configuration or use environment variables
+    if (file_exists($dbPath)) {
+        require $dbPath;
+    } else {
+        // Production (Render) - use environment variables
+        define('DB_HOST', getenv('DB_HOST'));
+        define('DB_PORT', getenv('DB_PORT') ?: '4000');
+        define('DB_NAME', getenv('DB_NAME'));
+        define('DB_USER', getenv('DB_USER'));
+        define('DB_PASS', getenv('DB_PASS'));
+    }
 
     // Connect to database using constants from database.php (with port support for TiDB)
     $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
