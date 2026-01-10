@@ -1,7 +1,6 @@
-<!-- forgot-password.php - WITH DEMO PROTECTION -->
 <?php
 /**
- * Forgot Password Page
+ * Forgot Password Page - WITH DEMO PROTECTION
  * Smart demo protection + temporary user cleanup
  */
 
