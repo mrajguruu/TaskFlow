@@ -66,6 +66,12 @@ try {
         exit;
     }
 
+    // Protect demo data (projects with IDs 1-7)
+    if ($projectId <= 7) {
+        echo jsonResponse(false, null, 'Demo projects cannot be edited. Create your own projects to test editing functionality.');
+        exit;
+    }
+
     // Convert empty dates to NULL
     $startDate = !empty($startDate) ? $startDate : null;
     $endDate = !empty($endDate) ? $endDate : null;

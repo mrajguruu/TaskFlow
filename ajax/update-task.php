@@ -43,6 +43,12 @@ try {
         exit;
     }
 
+    // Protect demo data (tasks with IDs 1-119)
+    if ($task_id <= 119) {
+        echo jsonResponse(false, null, 'Demo tasks cannot be edited. Create your own tasks to test editing functionality.');
+        exit;
+    }
+
     // Prepare update data
     $updates = [];
     $params = [];

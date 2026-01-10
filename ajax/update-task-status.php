@@ -55,6 +55,12 @@ try {
         exit;
     }
 
+    // Protect demo data (tasks with IDs 1-119)
+    if ($taskId <= 119) {
+        echo jsonResponse(false, null, 'Demo tasks cannot be moved or updated. Create your own tasks to test this functionality.');
+        exit;
+    }
+
     // Check if user has access to this project
     // User has access if they are:
     // 1. The project owner/creator
