@@ -13,7 +13,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
 [![Render](https://img.shields.io/badge/Deployed_on-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com)
 
-[🚀 Live Demo](#) • [Screenshots](#-screenshots) • [Deployment Guide](#-deployment) • [Documentation](#-documentation)
+[🚀 Live Demo](https://taskflow-wbld.onrender.com) • [Screenshots](#-screenshots) • [Deployment Guide](#-deployment) • [Documentation](#-documentation)
 
 </div>
 
@@ -30,7 +30,7 @@ TaskFlow is a **comprehensive project management system** designed to help teams
 - 🚀 **Real-time Interactions** - AJAX-powered operations without page reloads
 - 📱 **Fully Responsive** - Seamless experience across all devices
 - 🌙 **Smart Dark Mode** - System-aware theme with smooth transitions
-- 🤖 **Automated Maintenance** - Native cron jobs on Render.com (every 2 hours)
+- 🤖 **Automated Maintenance** - Free cron jobs via cron-job.org (every 2 hours)
 - 📊 **Production Ready** - Docker deployment, environment variables, demo data protection
 - ☁️ **Cloud-Native** - Deployed on Render.com with TiDB Cloud (5GB free forever)
 
@@ -59,7 +59,7 @@ TaskFlow is a **comprehensive project management system** designed to help teams
 ### **Developer Features**
 - ✅ RESTful AJAX API (14 endpoints)
 - ✅ Docker containerization with PHP 8.2 + Apache
-- ✅ Automated user cleanup with native Render cron jobs
+- ✅ Automated user cleanup with external cron service
 - ✅ Demo data protection for portfolio stability
 - ✅ Modular JavaScript (10 ES6+ modules)
 - ✅ Normalized database schema (8 tables, 3NF)
@@ -118,7 +118,7 @@ TaskFlow is a **comprehensive project management system** designed to help teams
 
 ## 🎮 Try It Out
 
-### **🚀 Live Demo** - Coming soon on Render.com!
+### **🚀 [Live Demo](https://taskflow-wbld.onrender.com)**
 
 TaskFlow comes with pre-configured demo accounts and rich sample data:
 
@@ -139,7 +139,7 @@ TaskFlow comes with pre-configured demo accounts and rich sample data:
 - Complete activity audit trail
 - Sample file attachments
 
-> **Note:** Demo users (1-8), projects (1-7), and tasks (1-119) are protected from deletion to maintain portfolio integrity. Create your own test data—it will be automatically cleaned up after 1 hour!
+> **Note:** Demo users (1-8), projects (1-7), and tasks (1-119) are protected from deletion AND editing to maintain portfolio integrity. Create your own test data—it will be automatically cleaned up after 1 hour!
 
 ---
 
@@ -160,7 +160,7 @@ TaskFlow comes with pre-configured demo accounts and rich sample data:
 **DevOps & Deployment:**
 - Docker containerization
 - Render.com hosting (free tier)
-- Native cron jobs for automation
+- cron-job.org for automation
 - Git-based auto-deployment
 - Environment variables for configuration
 - TiDB Cloud (5GB free forever)
@@ -169,23 +169,89 @@ TaskFlow comes with pre-configured demo accounts and rich sample data:
 
 ## 🚀 Deployment
 
-### **Cloud Deployment (Recommended)**
+### **Cloud Deployment (Production)**
 
-TaskFlow is designed for **free cloud deployment** using:
+TaskFlow is deployed using a completely free stack:
 - **Render.com** - Free web hosting with Docker support
 - **TiDB Cloud** - 5GB MySQL-compatible database (free forever)
+- **cron-job.org** - Free external cron service
 
-**Quick Start:** Follow [QUICK_START_RENDER_TIDB.md](QUICK_START_RENDER_TIDB.md) for 20-minute deployment
+**Step 1: Set Up TiDB Cloud Database**
 
-**Detailed Guide:** See [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md) for complete step-by-step instructions
+1. Go to [TiDB Cloud](https://tidbcloud.com) and create a free account
+2. Create a new Serverless Tier cluster (5GB free forever)
+3. Note your connection details:
+   - Host (e.g., `gateway01.us-west-2.prod.aws.tidbcloud.com`)
+   - Port (usually `4000`)
+   - Database name
+   - Username and password
 
-**What You Get:**
-- ✅ Professional live URL (e.g., taskflow-xxx.onrender.com)
-- ✅ Automatic HTTPS/SSL certificates
-- ✅ Git-based auto-deployment (push to deploy)
-- ✅ Native cron jobs for automated cleanup
-- ✅ Environment variables for configuration
-- ✅ Free forever (no credit card required)
+4. Import the database schema and sample data:
+   ```bash
+   # Connect to TiDB (use your credentials)
+   mysql -h YOUR_HOST -P 4000 -u YOUR_USER -p --ssl-mode=REQUIRED
+
+   # Create database
+   CREATE DATABASE taskflow CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   USE taskflow;
+
+   # Import schema
+   source sql/database-localhost.sql;
+
+   # Import demo data
+   source sql/sample-data-localhost.sql;
+   ```
+
+**Step 2: Deploy to Render.com**
+
+1. Fork this repository to your GitHub account
+
+2. Go to [Render.com](https://render.com) and create a free account
+
+3. Click **New +** → **Web Service**
+
+4. Connect your GitHub repository
+
+5. Configure the service:
+   - **Name**: `taskflow` (or any name you prefer)
+   - **Runtime**: Docker
+   - **Plan**: Free
+   - **Branch**: main
+
+6. Add environment variables (click **Advanced** → **Add Environment Variable**):
+   ```
+   DB_HOST=your-tidb-host.tidbcloud.com
+   DB_PORT=4000
+   DB_NAME=taskflow
+   DB_USER=your-tidb-username
+   DB_PASS=your-tidb-password
+   CLEANUP_TOKEN=your-random-secure-token-here
+   ```
+
+7. Click **Create Web Service**
+
+8. Wait for deployment (first build takes 3-5 minutes)
+
+9. Your app will be live at `https://taskflow-xxx.onrender.com`
+
+**Step 3: Set Up Automated Cleanup**
+
+1. Go to [cron-job.org](https://cron-job.org) and create a free account
+
+2. Create a new cron job:
+   - **Title**: TaskFlow - Cleanup Temp Users
+   - **URL**: `https://your-app.onrender.com/cron/cleanup-temp-users.php?token=YOUR_CLEANUP_TOKEN`
+   - **Schedule**: Every 2 hours
+   - **Cron Expression**: `0 */2 * * *`
+   - **Execute**: At 00:00, 02:00, 04:00, 06:00, 08:00, 10:00, 12:00, 14:00, 16:00, 18:00, 20:00, 22:00 UTC
+
+3. Save and enable the cron job
+
+**What This Does:**
+- Automatically deletes test users created more than 1 hour ago
+- Protects demo users (IDs 1-8) from deletion
+- Keeps your live demo clean and functional
+- Runs every 2 hours at the top of the hour
 
 ---
 
@@ -233,22 +299,6 @@ Comprehensive technical documentation covering:
 - Performance optimizations
 - What interviewers will notice
 
-### **🚀 [RENDER_DEPLOYMENT.md](RENDER_DEPLOYMENT.md)** - Full Deployment Guide
-Complete cloud deployment instructions:
-- TiDB Cloud setup (free 5GB database)
-- Render.com deployment with Docker
-- Environment variables configuration
-- Cron job setup for automated cleanup
-- Testing and troubleshooting
-- Monitoring and logs
-
-### **⚡ [QUICK_START_RENDER_TIDB.md](QUICK_START_RENDER_TIDB.md)** - Quick Start
-Condensed 20-minute deployment checklist:
-- Step-by-step deployment tasks
-- Pre-configured environment templates
-- Common issues and quick fixes
-- Success indicators
-
 ---
 
 ## 🔒 Security
@@ -262,6 +312,7 @@ TaskFlow implements production-grade security:
 - ✅ **File Upload Security** - MIME type verification, size limits
 - ✅ **Session Security** - Regeneration, timeout, secure cookies
 - ✅ **Access Control** - Role-based permissions throughout
+- ✅ **Demo Data Protection** - Cannot delete or edit protected demo data
 
 **For detailed security implementation, see [TECHNICAL.md](TECHNICAL.md#-security-features)**
 
@@ -276,7 +327,7 @@ Built with pure PHP and Vanilla JavaScript to demonstrate fundamental understand
 - Docker containerization for consistent deployment
 - Environment variables for cloud configuration
 - Demo data protection for portfolio stability
-- Automated maintenance with Render cron jobs
+- Automated maintenance with external cron service
 - Comprehensive error logging
 - Security-first development approach
 
