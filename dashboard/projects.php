@@ -25,13 +25,13 @@ $search = $_GET['search'] ?? '';
 $statusFilter = $_GET['status'] ?? '';
 
 try {
-    // Base query
+    // Base query - using MAX() for owner_name to satisfy ONLY_FULL_GROUP_BY mode
     $sql = "
         SELECT p.*,
                COUNT(DISTINCT t.id) as task_count,
                COUNT(DISTINCT CASE WHEN t.status = 'completed' THEN t.id END) as completed_count,
                COUNT(DISTINCT pm.user_id) as member_count,
-               u.full_name as owner_name,
+               MAX(u.full_name) as owner_name,
                (SELECT role FROM project_members WHERE project_id = p.id AND user_id = ?) as user_role
         FROM projects p
         LEFT JOIN users u ON p.owner_id = u.id
