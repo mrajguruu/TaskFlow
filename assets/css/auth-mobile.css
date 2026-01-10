@@ -379,7 +379,11 @@
     }
 
     .form-footer a,
-    .auth-footer a {
+    .auth-footer a,
+    .form-footer a:link,
+    .auth-footer a:link,
+    .form-footer a:visited,
+    .auth-footer a:visited {
         color: #ffffff !important;
         font-weight: 700 !important;
         text-decoration: underline !important;
@@ -587,7 +591,11 @@
     }
 
     .dark-mode .form-footer a,
-    .dark-mode .auth-footer a {
+    .dark-mode .auth-footer a,
+    .dark-mode .form-footer a:link,
+    .dark-mode .auth-footer a:link,
+    .dark-mode .form-footer a:visited,
+    .dark-mode .auth-footer a:visited {
         color: #ffffff !important;
         border-bottom: none !important;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
