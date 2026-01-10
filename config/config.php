@@ -14,7 +14,12 @@ define('APP_NAME', 'TaskFlow');
 define('APP_VERSION', '1.0.0');
 
 // Dynamic APP_URL - works on localhost and mobile
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+// Force HTTPS on Render.com (onrender.com domain)
+if (strpos($_SERVER['HTTP_HOST'], 'onrender.com') !== false) {
+    $protocol = 'https';
+} else {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+}
 $host = $_SERVER['HTTP_HOST'];
 $scriptPath = dirname($_SERVER['SCRIPT_NAME']);
 $baseUrl = $protocol . '://' . $host . rtrim(str_replace('\\', '/', $scriptPath), '/');
