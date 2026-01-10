@@ -384,27 +384,25 @@
     .auth-footer a:link,
     .form-footer a:visited,
     .auth-footer a:visited {
-        color: #ffffff !important;
+        color: #2563eb !important;
         font-weight: 700 !important;
-        text-decoration: underline !important;
+        text-decoration: none !important;
         border-bottom: none !important;
         padding: 4px 8px !important;
         transition: all 0.2s ease !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        text-shadow: none !important;
         display: inline-block !important;
         background: transparent !important;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
+        -webkit-tap-highlight-color: rgba(37, 99, 235, 0.1);
         touch-action: manipulation;
-        text-decoration-color: rgba(255, 255, 255, 0.5) !important;
     }
 
     .form-footer a:hover,
     .form-footer a:active,
     .auth-footer a:hover,
     .auth-footer a:active {
-        color: #ffffff !important;
+        color: #1d4ed8 !important;
         text-decoration: underline !important;
-        text-decoration-color: rgba(255, 255, 255, 1) !important;
         transform: translateY(-1px);
     }
 
@@ -596,18 +594,16 @@
     .dark-mode .auth-footer a:link,
     .dark-mode .form-footer a:visited,
     .dark-mode .auth-footer a:visited {
-        color: #ffffff !important;
+        color: #60a5fa !important;
         border-bottom: none !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
-        text-decoration: underline !important;
-        text-decoration-color: rgba(255, 255, 255, 0.5) !important;
+        text-shadow: none !important;
+        text-decoration: none !important;
     }
 
     .dark-mode .form-footer a:hover,
     .dark-mode .auth-footer a:hover {
-        color: #ffffff !important;
+        color: #93c5fd !important;
         text-decoration: underline !important;
-        text-decoration-color: rgba(255, 255, 255, 1) !important;
     }
 
     /* Dark mode alerts */
