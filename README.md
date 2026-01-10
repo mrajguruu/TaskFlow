@@ -126,20 +126,24 @@ TaskFlow comes with pre-configured demo accounts and rich sample data:
 
 | Email | Role | What You Can Test |
 |-------|------|-------------------|
-| `admin@taskflow.com` | **Admin** | Full system access, user management, delete permissions |
-| `john@taskflow.com` | **Project Owner** | Create projects, invite members, manage teams |
-| `sarah@taskflow.com` | **Designer** | Task editing, file uploads, kanban workflow |
-| `mike@taskflow.com` | **Developer** | Multi-project collaboration, commenting |
+| `admin@taskflow.com` | **Admin** | Full system access, user management, all permissions |
+| `john@taskflow.com` | **Member** | Project owner, create projects, manage teams |
+| `sarah@taskflow.com` | **Member** | Task editing, file uploads, kanban workflow |
+| `mike@taskflow.com` | **Member** | Multi-project collaboration, commenting |
+| `emma@taskflow.com` | **Member** | Task assignments, status updates |
+| `alex@taskflow.com` | **Member** | Project collaboration, activity tracking |
+| `liu@taskflow.com` | **Member** | Team member functionality |
+| `rachel@taskflow.com` | **Member** | General user features |
 
 **Pre-loaded Demo Data:**
 - 8 users with different roles
-- 7 projects across various stages
-- 119 realistic tasks with descriptions
-- 35+ team collaboration comments
-- Complete activity audit trail
+- 7 projects across various stages (active, completed, archived)
+- 119 realistic tasks with descriptions and assignments
+- 352 team collaboration comments
+- 405 activity log entries for complete audit trail
 - Sample file attachments
 
-> **Note:** Demo users (1-8), projects (1-7), and tasks (1-119) are protected from deletion AND editing to maintain portfolio integrity. Create your own test data—it will be automatically cleaned up after 1 hour!
+> **Note:** Demo users (IDs 1-8), projects (IDs 1-7), and tasks (IDs 1-119) are **protected from deletion AND editing** to maintain portfolio integrity. Create your own test data—it will be automatically cleaned up after 2 hours (next cron job run)!
 
 ---
 
@@ -171,15 +175,19 @@ TaskFlow comes with pre-configured demo accounts and rich sample data:
 
 ### **Cloud Deployment (Production)**
 
-TaskFlow is deployed using a completely free stack:
+TaskFlow is deployed using a completely **free** stack:
 - **Render.com** - Free web hosting with Docker support
 - **TiDB Cloud** - 5GB MySQL-compatible database (free forever)
-- **cron-job.org** - Free external cron service
+- **cron-job.org** - Free external cron service for automated cleanup
 
-**Step 1: Set Up TiDB Cloud Database**
+---
+
+### **Step 1: Set Up TiDB Cloud Database**
 
 1. Go to [TiDB Cloud](https://tidbcloud.com) and create a free account
-2. Create a new Serverless Tier cluster (5GB free forever)
+
+2. Create a new **Serverless Tier** cluster (5GB free forever)
+
 3. Note your connection details:
    - Host (e.g., `gateway01.us-west-2.prod.aws.tidbcloud.com`)
    - Port (usually `4000`)
@@ -198,13 +206,15 @@ TaskFlow is deployed using a completely free stack:
    # Import schema
    source sql/database-localhost.sql;
 
-   # Import demo data
+   # Import demo data (923 rows - 8 users, 7 projects, 119 tasks, etc.)
    source sql/sample-data-localhost.sql;
    ```
 
-**Step 2: Deploy to Render.com**
+---
 
-1. Fork this repository to your GitHub account
+### **Step 2: Deploy to Render.com**
+
+1. **Fork this repository** to your GitHub account
 
 2. Go to [Render.com](https://render.com) and create a free account
 
@@ -218,7 +228,7 @@ TaskFlow is deployed using a completely free stack:
    - **Plan**: Free
    - **Branch**: main
 
-6. Add environment variables (click **Advanced** → **Add Environment Variable**):
+6. Add **Environment Variables** (click **Advanced** → **Add Environment Variable**):
    ```
    DB_HOST=your-tidb-host.tidbcloud.com
    DB_PORT=4000
@@ -228,38 +238,51 @@ TaskFlow is deployed using a completely free stack:
    CLEANUP_TOKEN=your-random-secure-token-here
    ```
 
+   **Generate secure token:**
+   ```bash
+   # Use this command to generate a random token
+   openssl rand -hex 32
+   ```
+
 7. Click **Create Web Service**
 
 8. Wait for deployment (first build takes 3-5 minutes)
 
 9. Your app will be live at `https://taskflow-xxx.onrender.com`
 
-**Step 3: Set Up Automated Cleanup**
+---
+
+### **Step 3: Set Up Automated Cleanup (cron-job.org)**
 
 1. Go to [cron-job.org](https://cron-job.org) and create a free account
 
 2. Create a new cron job:
-   - **Title**: TaskFlow - Cleanup Temp Users
+   - **Title**: `TaskFlow - Cleanup Temp Users`
    - **URL**: `https://your-app.onrender.com/cron/cleanup-temp-users.php?token=YOUR_CLEANUP_TOKEN`
    - **Schedule**: Every 2 hours
    - **Cron Expression**: `0 */2 * * *`
-   - **Execute**: At 00:00, 02:00, 04:00, 06:00, 08:00, 10:00, 12:00, 14:00, 16:00, 18:00, 20:00, 22:00 UTC
+   - **Execution Times**: 00:00, 02:00, 04:00, 06:00, 08:00, 10:00, 12:00, 14:00, 16:00, 18:00, 20:00, 22:00 UTC
 
-3. Save and enable the cron job
+3. Save and **enable** the cron job
 
 **What This Does:**
 - Automatically deletes test users created more than 1 hour ago
+- Runs every 2 hours, so test users persist for 1-2 hours after creation
 - Protects demo users (IDs 1-8) from deletion
 - Keeps your live demo clean and functional
-- Runs every 2 hours at the top of the hour
+
+**Testing the Cleanup:**
+- Visit `https://your-app.onrender.com/create-test-users.php?confirm=yes` to create 10 test users
+- Wait for the next cron job run (every 2 hours)
+- Test users older than 1 hour will be automatically deleted
 
 ---
 
 ### **Local Development**
 
 **Prerequisites:**
-- PHP 8.2+
-- MySQL 5.7+ (or MariaDB)
+- PHP 8.2+ with extensions (pdo, pdo_mysql, mbstring, openssl)
+- MySQL 5.7+ or MariaDB 10.3+
 - Apache/Nginx (or PHP built-in server)
 
 **Quick Setup:**
@@ -271,19 +294,21 @@ cd TaskFlow
 # 2. Create database
 mysql -u root -p -e "CREATE DATABASE taskflow CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-# 3. Import schema and data
+# 3. Import schema and sample data
 mysql -u root -p taskflow < sql/database-localhost.sql
 mysql -u root -p taskflow < sql/sample-data-localhost.sql
 
 # 4. Configure database connection
 cp config/database.example.php config/database.php
-# Edit config/database.php with your credentials
+# Edit config/database.php with your MySQL credentials
 
 # 5. Launch local server
 php -S localhost:8000
 ```
 
-Visit `http://localhost:8000` and login with `admin@taskflow.com` / `password123`
+Visit `http://localhost:8000` and login with:
+- Email: `admin@taskflow.com`
+- Password: `password123`
 
 ---
 
@@ -308,11 +333,13 @@ TaskFlow implements production-grade security:
 - ✅ **Password Security** - Bcrypt hashing with proper cost factors
 - ✅ **SQL Injection Protection** - 100% prepared statements via PDO
 - ✅ **CSRF Protection** - Token validation on all forms
-- ✅ **XSS Prevention** - Proper output escaping
+- ✅ **XSS Prevention** - Proper output escaping with htmlspecialchars()
 - ✅ **File Upload Security** - MIME type verification, size limits
 - ✅ **Session Security** - Regeneration, timeout, secure cookies
 - ✅ **Access Control** - Role-based permissions throughout
 - ✅ **Demo Data Protection** - Cannot delete or edit protected demo data
+- ✅ **Rate Limiting** - Cron job rate limiting (10 minute minimum interval)
+- ✅ **Error Handling** - Comprehensive logging without exposing sensitive data
 
 **For detailed security implementation, see [TECHNICAL.md](TECHNICAL.md#-security-features)**
 
@@ -361,6 +388,7 @@ Built with pure PHP and Vanilla JavaScript to demonstrate fundamental understand
 | **Security Measures** | 15+ implemented |
 | **Demo Data** | 8 users, 7 projects, 119 tasks |
 | **File Support** | 10 types, 10MB limit |
+| **Total Database Rows** | 923 (in sample data) |
 
 ---
 
