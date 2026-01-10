@@ -102,9 +102,9 @@ try {
             WHERE id NOT IN ($placeholders)
             AND created_at < DATE_SUB(NOW(), INTERVAL ? HOUR)
             ORDER BY created_at ASC
-            LIMIT ?";
+            LIMIT " . (int)$maxDeletePerRun;
 
-    $params = array_merge($protectedUserIds, [$cleanupAgeHours, $maxDeletePerRun]);
+    $params = array_merge($protectedUserIds, [$cleanupAgeHours]);
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
     $usersToDelete = $stmt->fetchAll();
