@@ -12,7 +12,7 @@ SET time_zone = "+00:00";
 -- ============================================================
 -- LOCALHOST VERSION
 -- This version includes CREATE DATABASE for local development
--- For production (InfinityFree), use database.sql instead
+-- For production, use database.sql instead
 -- ============================================================
 
 -- Create database
